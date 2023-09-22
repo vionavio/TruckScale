@@ -16,6 +16,7 @@
 
 package android.template.core.data.di
 
+import android.app.Application
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -24,26 +25,31 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import android.template.core.data.MyModelRepository
 import android.template.core.data.DefaultMyModelRepository
+import android.template.core.data.TicketRepository
+import android.template.core.data.TicketRepositoryImpl
+import android.template.core.database.TicketDatabase
+import androidx.room.Room
+import dagger.Provides
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface DataModule {
+object DataModule {
 
+    @Provides
     @Singleton
-    @Binds
-    fun bindsMyModelRepository(
-        myModelRepository: DefaultMyModelRepository
-    ): MyModelRepository
-}
+    fun provideTicketDatabase(app: Application): TicketDatabase {
+        return Room.databaseBuilder(
+            app,
+            TicketDatabase::class.java,
+            TicketDatabase.DATABASE_NAME
+        ).build()
+    }
 
-class FakeMyModelRepository @Inject constructor() : MyModelRepository {
-    override val myModels: Flow<List<String>> = flowOf(fakeMyModels)
-
-    override suspend fun add(name: String) {
-        throw NotImplementedError()
+    @Provides
+    @Singleton
+    fun provideTicketRepository(db: TicketDatabase): TicketRepository {
+        return TicketRepositoryImpl(db.ticketDao)
     }
 }
-
-val fakeMyModels = listOf("One", "Two", "Three")
