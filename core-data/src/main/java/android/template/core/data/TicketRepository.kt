@@ -1,14 +1,14 @@
 package android.template.core.data
 
-import android.template.core.database.Ticket
+import android.template.core.database.model.TicketDBEntity
 import kotlinx.coroutines.flow.Flow
 
 interface TicketRepository {
-    fun getTickets(): Flow<List<Ticket>>
+    fun getTickets(): Flow<List<TicketDBEntity>>
 
-    suspend fun getTicketById(id: Int): Ticket?
+    suspend fun getTicketById(id: Int): TicketDBEntity?
 
-    suspend fun insertTicket(ticket: Ticket)
+    suspend fun insertTicket(ticket: TicketDBEntity)
 
-    suspend fun deleteTicket(ticket: Ticket)
+    suspend fun deleteTicket(ticket: TicketDBEntity)
 }

@@ -1,5 +1,6 @@
 package android.template.core.database
 
+import android.template.core.database.model.TicketDBEntity
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -10,16 +11,16 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TicketDao {
 
-    @Query("SELECT * FROM ticket")
-    fun getTickets(): Flow<List<Ticket>>
+    @Query("SELECT * FROM ticketDBEntity")
+    fun getTickets(): Flow<List<TicketDBEntity>>
 
-    @Query("SELECT * FROM ticket WHERE id = :id")
-    suspend fun getTicketById(id: Int): Ticket?
+    @Query("SELECT * FROM ticketDBEntity WHERE id = :id")
+    suspend fun getTicketById(id: Int): TicketDBEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTicket(ticket: Ticket)
+    suspend fun insertTicket(ticket: TicketDBEntity)
 
     @Delete
-    suspend fun deleteTicket(ticket: Ticket)
+    suspend fun deleteTicket(ticket: TicketDBEntity)
 
 }

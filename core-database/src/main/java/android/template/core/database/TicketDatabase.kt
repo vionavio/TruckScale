@@ -1,10 +1,11 @@
 package android.template.core.database
 
+import android.template.core.database.model.TicketDBEntity
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [Ticket::class],
+    entities = [TicketDBEntity::class],
     version = 1
 )
 abstract class TicketDatabase: RoomDatabase() {

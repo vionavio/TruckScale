@@ -1,13 +1,8 @@
-package android.template.core.database
+package com.viona.core.domain.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity
 data class Ticket(
-
-    @PrimaryKey val id: Int? = null,
-
+    val id: Int,
+    val driverName: String,
     val timestamp: Long,
     val licenseNumber: Int,
     val inboundWeight: Double,

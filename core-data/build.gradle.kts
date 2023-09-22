@@ -61,4 +61,6 @@ dependencies {
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
+
+    implementation(libs.androidx.room.runtime)
 }
