@@ -16,12 +16,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TicketsViewModel @Inject constructor(
+class TicketsWeighbridgeViewModel @Inject constructor(
     private val ticketUseCase: TicketUseCase
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(TicketState())
-    val state: State<TicketState> = _state
+    private val _state = mutableStateOf(TicketWeighbridgeState())
+    val state: State<TicketWeighbridgeState> = _state
 
     private var recentDeletedTicket: Ticket? = null
 
@@ -31,9 +31,9 @@ class TicketsViewModel @Inject constructor(
         getTicket(TicketOrder.Date(OrderType.Descending))
     }
 
-    fun onEvent(event: TicketEvent) {
+    fun onEvent(event: TicketWeighbridgeEvent) {
         when (event) {
-            is TicketEvent.Order -> {
+            is TicketWeighbridgeEvent.Order -> {
                 if (state.value.ticketOrder::class == event.ticketOrder::class &&
                     state.value.ticketOrder.orderType == event.ticketOrder.orderType){
                     return
@@ -42,7 +42,7 @@ class TicketsViewModel @Inject constructor(
 
             }
 
-            is TicketEvent.DeleteTicket -> {
+            is TicketWeighbridgeEvent.DeleteTicket -> {
                 viewModelScope.launch {
                     ticketUseCase.deleteTicket(event.ticket)
                     recentDeletedTicket = event.ticket
@@ -50,7 +50,7 @@ class TicketsViewModel @Inject constructor(
 
             }
 
-            is TicketEvent.RestoreTicket -> {
+            is TicketWeighbridgeEvent.RestoreTicket -> {
                 viewModelScope.launch {
                     ticketUseCase.addTicket(recentDeletedTicket ?: return@launch)
                     recentDeletedTicket = null
@@ -59,7 +59,7 @@ class TicketsViewModel @Inject constructor(
 
             }
 
-            is TicketEvent.ToggleOrderSection -> {
+            is TicketWeighbridgeEvent.ToggleOrderSection -> {
                 _state.value = state.value.copy(
                     isOrderSectionVisible = !state.value.isOrderSectionVisible
                 )
