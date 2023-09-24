@@ -45,14 +45,15 @@ fun TicketScreen(
     Scaffold(
         topBar = { WeighbridgeAppBar(
             icon = Icons.Default.Home,
-            text = "Weighbridge Ticket"
+            text = "Weighbridge Ticket",
+            onIconClick = {}
         ) },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
                     navController.navigate(Screen.AddEditTicketScreen.route)
                 },
-                containerColor = MaterialTheme.colors.primaryVariant
+                containerColor = MaterialTheme.colors.secondary
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add Ticket")
             }

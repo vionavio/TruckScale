@@ -1,7 +1,10 @@
 package android.template.feature.weighbridge.ui.add_edit_ticket
 
+import android.template.feature.weighbridge.ui.Screen
 import android.template.feature.weighbridge.ui.add_edit_ticket.components.TransparentHintTextField
 import android.template.feature.weighbridge.ui.ticket.components.WeighbridgeAppBar
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absolutePadding
@@ -15,6 +18,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
@@ -59,7 +63,10 @@ fun AddEditTicketScreen(
         topBar = {
             WeighbridgeAppBar(
                 icon = Icons.Default.ArrowBack,
-                text = "Weighbridge Edit"
+                text = "Weighbridge Detail/Edit",
+                onIconClick = {
+                    navController.navigateUp()
+                }
             )
         },
         floatingActionButton = {
@@ -67,9 +74,9 @@ fun AddEditTicketScreen(
                 onClick = {
                     viewModel.onEvent(AddEditTicketEvent.SaveTicket)
                 },
-                backgroundColor = MaterialTheme.colors.primary
+                backgroundColor = MaterialTheme.colors.secondary
             ) {
-                Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = "Save ticket")
+                Icon(imageVector = Icons.Default.Check, contentDescription = "Save ticket")
             }
         },
         scaffoldState = scaffoldState
