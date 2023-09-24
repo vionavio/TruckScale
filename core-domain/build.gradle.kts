@@ -41,4 +41,10 @@ dependencies {
     // Arch Components
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    // unit tests
+    testImplementation(libs.androidx.core.ktx)
+    testImplementation(libs.truth)
+    testImplementation(libs.mockk)
+    testImplementation(libs.junit)
 }
