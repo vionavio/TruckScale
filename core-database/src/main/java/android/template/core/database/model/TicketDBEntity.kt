@@ -5,13 +5,13 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class TicketDBEntity(
-
-    @PrimaryKey val id: Int? = null,
-
     val driverName: String,
-    val timestamp: Long,
-    val licenseNumber: Int,
-    val inboundWeight: Double,
-    val outboundWeight: Double,
-    val netWeight: Double
+    val timestamp: String,
+    val licenseNumber: Long,
+    val inboundWeight: Int,
+    val outboundWeight: Int,
+    val netWeight: Int,
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Int
 )

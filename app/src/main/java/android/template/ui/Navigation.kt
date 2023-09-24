@@ -16,21 +16,42 @@
 
 package android.template.ui
 
-import androidx.compose.foundation.layout.padding
+import android.template.feature.weighbridge.ui.Screen
+import android.template.feature.weighbridge.ui.add_edit_ticket.AddEditTicketScreen
+import android.template.feature.weighbridge.ui.ticket.TicketScreen
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import android.template.feature.weighbridge.ui.MyModelScreen
+import androidx.navigation.navArgument
 
 @Composable
 fun MainNavigation() {
-    val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "main") {
-        composable("main") { MyModelScreen(modifier = Modifier.padding(16.dp)) }
-        // TODO: Add more destinations
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = Screen.TicketsScreen.route
+    ) {
+        composable(route = Screen.TicketsScreen.route) {
+            TicketScreen(navController = navController)
+        }
+        composable(
+            route = Screen.AddEditTicketScreen.route +
+                    "?ticketId={ticketId}",
+            arguments = listOf(
+                navArgument(
+                    name = "ticketId"
+                ) {
+                    type = NavType.IntType
+                    defaultValue = -1
+                },
+            )
+        ) {
+            AddEditTicketScreen(
+                navController = navController
+            )
+        }
     }
 }

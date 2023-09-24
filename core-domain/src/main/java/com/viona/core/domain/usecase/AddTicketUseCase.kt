@@ -10,10 +10,10 @@ class AddTicketUseCase(
     private val repository: TicketRepository
 ) {
     suspend operator fun invoke(ticket: Ticket){
-        if (ticket.driverName.isBlank()) {
+        if (ticket.driverName.isEmpty()) {
             throw InvalidException("The Driver Name cant be empty")
         }
-        if (ticket.licenseNumber == 0) {
+        if (ticket.licenseNumber == 0L) {
             throw InvalidException("The License Number cant be empty")
         }
 

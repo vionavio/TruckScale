@@ -17,20 +17,14 @@
 package android.template.core.data.di
 
 import android.app.Application
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
-import android.template.core.data.MyModelRepository
-import android.template.core.data.DefaultMyModelRepository
 import android.template.core.data.TicketRepository
 import android.template.core.data.TicketRepositoryImpl
 import android.template.core.database.TicketDatabase
 import androidx.room.Room
+import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module

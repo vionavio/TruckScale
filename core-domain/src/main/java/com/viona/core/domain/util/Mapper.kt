@@ -18,7 +18,7 @@ fun Ticket.toTicketDBEntity(): TicketDBEntity {
 
 fun TicketDBEntity.toTicket(): Ticket {
     return Ticket(
-        id = this.id ?: 0,
+        id = this.id,
         driverName = this.driverName,
         timestamp = this.timestamp,
         licenseNumber = this.licenseNumber,

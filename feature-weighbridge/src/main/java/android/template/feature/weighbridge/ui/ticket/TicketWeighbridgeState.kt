@@ -7,5 +7,5 @@ import com.viona.core.domain.util.TicketOrder
 data class TicketWeighbridgeState(
     val tickets: List<Ticket> = emptyList(),
     val ticketOrder: TicketOrder = TicketOrder.Date(OrderType.Descending),
-    val isOrderSectionVisible: Boolean = false
+    val isOrderSectionVisible: Boolean = true
 )
