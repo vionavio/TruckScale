@@ -27,6 +27,7 @@ android {
 
     defaultConfig {
         minSdk = 21
+        targetSdk = 33
 
         testInstrumentationRunner = "android.template.core.testing.HiltTestRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -58,7 +59,9 @@ dependencies {
     implementation(project(":core-data"))
     implementation(project(":core-ui"))
     implementation(project(":core-domain"))
+    implementation(libs.room.ktx)
     androidTestImplementation(project(":core-testing"))
+    androidTestImplementation(project(":core-database"))
 
     // Core Android dependencies
     implementation(libs.androidx.activity.compose)
