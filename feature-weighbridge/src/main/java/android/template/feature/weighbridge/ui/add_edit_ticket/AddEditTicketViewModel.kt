@@ -25,6 +25,7 @@ class AddEditTicketViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+    private var currentTicketId: String? = ""
     private val _driverName = mutableStateOf(
         TicketTextFieldState(
             title = "Driver Name :",
@@ -41,8 +42,7 @@ class AddEditTicketViewModel @Inject constructor(
     )
     val licenseNumber: State<TicketTextFieldState> = _licenseNumber
 
-    //convertTimestampToDateString(System.currentTimeMillis())
-    private var _timestamp = mutableStateOf<String>(convertTimestampToDateString(System.currentTimeMillis()))
+    private var _timestamp = mutableStateOf(convertTimestampToDateString(System.currentTimeMillis()))
     val timestamp: MutableState<String> = _timestamp
 
     private val _inboundWeight = mutableStateOf(
@@ -71,8 +71,6 @@ class AddEditTicketViewModel @Inject constructor(
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
-
-    private var currentTicketId: String? = UUID.randomUUID().toString()
 
     init {
         savedStateHandle.get<String>("ticketId")?.let { ticketId ->
@@ -179,7 +177,7 @@ class AddEditTicketViewModel @Inject constructor(
                                 timestamp = timestamp.value,
                                 inboundWeight = if (inbound.isNotEmpty()) inbound.toInt() else 0,
                                 outboundWeight = if (outbound.isNotEmpty()) outbound.toInt() else 0,
-                                id = currentTicketId ?: UUID.randomUUID().toString(),
+                                id = currentTicketId ?: "",
                                 netWeight = if (inbound.isNotEmpty() && outbound.isNotEmpty())
                                     (outbound.toInt() - inbound.toInt()) else 0
                             )

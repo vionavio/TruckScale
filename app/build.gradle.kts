@@ -21,6 +21,7 @@ plugins {
     alias(libs.plugins.hilt.gradle)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.realtime.firebase)
 }
 
 android {
@@ -90,6 +91,7 @@ dependencies {
 
     // Hilt Dependency Injection
     implementation(libs.hilt.android)
+    implementation(libs.firebase.database.ktx)
     kapt(libs.hilt.compiler)
 
     // Arch Components
