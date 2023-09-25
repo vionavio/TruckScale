@@ -3,7 +3,7 @@ Weighbridge
 
 App ticketing for weighbridge
 
-![Screenshot-20230925-123911-2](https://github.com/vionavio/TruckScale/assets/62820688/e393145f-7002-4fd4-be4d-81e272ce8b26)
+![Screenshot-20230925-123911-2](https://github.com/vionavio/TruckScale/assets/62820688/bac8ffb9-4f92-49d7-ad44-735d3e5c17f6)
 
 ## Features
 
