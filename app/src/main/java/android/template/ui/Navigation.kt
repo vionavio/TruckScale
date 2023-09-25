@@ -44,8 +44,8 @@ fun MainNavigation() {
                 navArgument(
                     name = "ticketId"
                 ) {
-                    type = NavType.IntType
-                    defaultValue = -1
+                    type = NavType.StringType
+                    defaultValue = "-1"
                 },
             )
         ) {

@@ -11,7 +11,7 @@ class TicketRepositoryImpl(
         return dao.getTickets()
     }
 
-    override suspend fun getTicketById(id: Int): TicketDBEntity? {
+    override suspend fun getTicketById(id: String): TicketDBEntity? {
         return dao.getTicketById(id)
     }
 

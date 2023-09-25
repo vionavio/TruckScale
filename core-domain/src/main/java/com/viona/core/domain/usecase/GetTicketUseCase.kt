@@ -7,7 +7,7 @@ import com.viona.core.domain.util.toTicket
 class GetTicketUseCase(
     private val repository: TicketRepository
 ) {
-    suspend operator fun invoke(id: Int): Ticket? {
+    suspend operator fun invoke(id: String): Ticket? {
         return repository.getTicketById(id)?.toTicket()
     }
 }

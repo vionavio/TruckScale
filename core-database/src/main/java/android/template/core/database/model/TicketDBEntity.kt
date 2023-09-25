@@ -12,6 +12,6 @@ data class TicketDBEntity(
     val outboundWeight: Int,
     val netWeight: Int,
 
-    @PrimaryKey(autoGenerate = true)
-    val id: Int
+    @PrimaryKey
+    val id: String
 )

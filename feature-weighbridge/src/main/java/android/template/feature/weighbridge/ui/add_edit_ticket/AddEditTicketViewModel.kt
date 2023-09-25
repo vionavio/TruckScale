@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -71,11 +72,11 @@ class AddEditTicketViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    private var currentTicketId: Int? = null
+    private var currentTicketId: String? = UUID.randomUUID().toString()
 
     init {
-        savedStateHandle.get<Int>("ticketId")?.let { ticketId ->
-            if (ticketId != -1) {
+        savedStateHandle.get<String>("ticketId")?.let { ticketId ->
+            if (ticketId.length != 1) {
                 viewModelScope.launch {
                     ticketUseCase.getTicket(ticketId)?.also { ticket ->
                         currentTicketId = ticket.id
@@ -178,7 +179,7 @@ class AddEditTicketViewModel @Inject constructor(
                                 timestamp = timestamp.value,
                                 inboundWeight = if (inbound.isNotEmpty()) inbound.toInt() else 0,
                                 outboundWeight = if (outbound.isNotEmpty()) outbound.toInt() else 0,
-                                id = currentTicketId ?: 0,
+                                id = currentTicketId ?: UUID.randomUUID().toString(),
                                 netWeight = if (inbound.isNotEmpty() && outbound.isNotEmpty())
                                     (outbound.toInt() - inbound.toInt()) else 0
                             )
