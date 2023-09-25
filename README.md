@@ -1,41 +1,30 @@
-Architecture starter template (multi-module)
+Weighbridge
 ==================
 
-This template is compatible with the latest **stable** version of Android Studio.
+App ticketing for weighbridge
 
-![Screenshot](https://github.com/android/architecture-templates/raw/main/screenshots.png)
+![Screenshot-20230925-123911-2](https://github.com/vionavio/TruckScale/assets/62820688/e393145f-7002-4fd4-be4d-81e272ce8b26)
 
 ## Features
 
 * Room Database
 * Hilt
 * ViewModel, read+write
-* UI in Compose, list + write (Material3)
+* UI in Compose, list + write
 * Navigation
 * Repository and data source
 * Kotlin Coroutines and Flow
 * Unit tests
 * UI tests using fake data with Hilt
 
-## Usage
+## APK Sample
+You can download the app here [Weighbridge App](https://drive.google.com/file/d/1ijSAPMvmnXf72ooRTBBQ6PJgp4NPqpUN/view?usp=share_link)
 
-1. Clone this branch
+## Contributors
 
-```
-git clone https://github.com/android/architecture-templates.git --branch base
-```
+- [Viona](https://github.com/vionavio)
 
+## Contact
 
-2. Run the customizer script:
+If you have any questions, suggestions, or need assistance, feel free to contact me at [vionamahdiya@gmail.com](mailto:vionamahdiya@gmail.com).
 
-```
-./customizer.sh your.package.name DataItemType [MyApplication]
-```
-
-Where `your.package.name` is your app ID (should be lowercase) and `DataItemType` is used for the
-name of the screen, exposed state and data base entity (should be PascalCase). You can add an optional application name.
-
-# License
-
-Now in Android is distributed under the terms of the Apache License (Version 2.0). See the
-[license](LICENSE) for more information.
