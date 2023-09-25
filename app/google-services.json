@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "217060391073",
+    "project_id": "truck-scale-cbf30",
+    "storage_bucket": "truck-scale-cbf30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217060391073:android:fbb9e201f32d02093dd8e0",
+        "android_client_info": {
+          "package_name": "android.template"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZSed2GREvgYQNgtDByGVmawW4iY1kb78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 package com.viona.core.domain.model
 
 data class Ticket(
-    val id: Int,
+    val id: String,
     val driverName: String,
     val timestamp: String,
     val licenseNumber: Long,
