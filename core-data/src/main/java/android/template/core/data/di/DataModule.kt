@@ -17,6 +17,7 @@
 package android.template.core.data.di
 
 import android.app.Application
+import android.content.Context
 import android.template.core.data.TicketRepository
 import android.template.core.data.TicketRepositoryImpl
 import android.template.core.database.TicketDatabase
@@ -24,12 +25,19 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+
+    @Provides
+    @Singleton
+    fun provideApplicationContext(@ApplicationContext context: Context): Context {
+        return context
+    }
 
     @Provides
     @Singleton
@@ -43,7 +51,7 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideTicketRepository(db: TicketDatabase): TicketRepository {
-        return TicketRepositoryImpl(db.ticketDao)
+    fun provideTicketRepository(db: TicketDatabase, @ApplicationContext context: Context): TicketRepository {
+        return TicketRepositoryImpl(db.ticketDao, context)
     }
 }
